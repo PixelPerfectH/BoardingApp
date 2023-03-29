@@ -13,6 +13,7 @@ public class LoginActivity extends AppCompatActivity {
     Button findWeatherBtn;
     EditText password;
     EditText login;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,14 +22,11 @@ public class LoginActivity extends AppCompatActivity {
         password = findViewById(R.id.editTextTextPassword);
         login = findViewById(R.id.editTextTextPersonName);
         Intent intent = new Intent(this, MainActivity.class);
-        findWeatherBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                intent.putExtra("1", login.getText().toString());
-                System.out.println(login.getText());
-                System.out.println(password.getText());
-                startActivity(intent);
-            }
+        findWeatherBtn.setOnClickListener(view -> {
+            intent.putExtra("1", login.getText().toString());
+            System.out.println(login.getText());
+            System.out.println(password.getText());
+            startActivity(intent);
         });
     }
 
