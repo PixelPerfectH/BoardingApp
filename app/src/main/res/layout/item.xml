@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="8dp"
     app:cardCornerRadius="20dp"
-    app:cardBackgroundColor="@color/cardview_dark_background"
+    app:cardBackgroundColor="@color/main_purple"
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="230dp"
+        android:layout_height="200dp"
         >
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imageViewItem"
             android:layout_width="100dp"
             android:layout_height="100dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -24,16 +25,28 @@
             android:src="@drawable/ic_launcher_foreground"/>
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/textViewItem"
             android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:text="Какое-то описание для сотрудника, я такой-то такой-то учусь там-то там-то все дела"
             android:textColor="@color/white"
-            android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/imageViewItem"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewNameItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:text="Some Name"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textViewItem"
+            app:layout_constraintStart_toEndOf="@+id/imageViewItem"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.909" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
