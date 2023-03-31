@@ -2,33 +2,29 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.myapplication.models.auth.LoginModel;
 import com.google.gson.Gson;
 
-import org.apache.http.HttpRequest;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.HttpClientBuilder;
-
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URI;
+
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class LoginActivity extends AppCompatActivity {
     Button findWeatherBtn;
     EditText password;
     EditText login;
 
+    @SuppressLint("StaticFieldLeak")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,29 +34,16 @@ public class LoginActivity extends AppCompatActivity {
         login = findViewById(R.id.editTextTextPersonName);
         Intent intent = new Intent(this, TasksActivity.class);
         findWeatherBtn.setOnClickListener(view -> {
-            String postUrl = "clerostyle.drawy.ru/api/auth/loginbypassword";
-            Gson gson = new Gson();
-            LoginModel loginModel = new LoginModel(login.getText().toString(), password.getText().toString());
-            String payload = gson.toJson(loginModel);
-            HttpClient client = HttpClientBuilder.create().build();
-            HttpPost post = new HttpPost(postUrl);
-            try {
-                StringEntity postingString = new StringEntity(payload);
-                post.setEntity(postingString);
-                post.setHeader("Content-Type", "application/json");
-                HttpResponse response = client.execute(post);
-                int statusCode = response.getStatusLine().getStatusCode();
-                if (statusCode != 200) {
-                    System.out.println("NO");
+            new LoginTask(login.getText().toString(), password.getText().toString()) {
+                @Override
+                protected void onPostExecute(Integer result) {
+                    if (result == 200) {
+                        // тут перекидывай на следующую страницу
+                    } else {
+                        // тут ошибку выводи
+                    }
                 }
-            } catch (UnsupportedEncodingException e) {
-                throw new RuntimeException(e);
-            } catch (ClientProtocolException e) {
-                throw new RuntimeException(e);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            }.execute("https://clerostyle.drawy.ru/api/auth/loginbypassword");
         });
     }
-
 }
