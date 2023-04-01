@@ -13,6 +13,7 @@
         android:layout_height="170sp"
         app:cardBackgroundColor="#ccc"
         app:cardCornerRadius="15dp"
+
         >
 
         <LinearLayout
