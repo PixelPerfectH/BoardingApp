@@ -7,11 +7,13 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.R;
+
 public class Description extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.description);
+        setContentView(R.layout.event_description);
         ScrollView scrollView = new ScrollView(this);
 
         TextView textView = new TextView(this);

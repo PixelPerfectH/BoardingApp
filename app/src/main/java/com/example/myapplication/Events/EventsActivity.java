@@ -17,8 +17,6 @@ public class EventsActivity extends AppCompatActivity {
     ArrayList<Event> events=new ArrayList<Event>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        /*super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);*/
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_events);
         // начальная инициализация списка
@@ -29,27 +27,11 @@ public class EventsActivity extends AppCompatActivity {
         EventAdapter.OnEventClickListener eventClickListener = new EventAdapter.OnEventClickListener() {
             @Override
             public void onEventClick(Event state, int position) {
-
-                /*Toast.makeText(getApplicationContext(), "Был выбран пункт " + state.getName(),
-                        Toast.LENGTH_SHORT).show();*/
                 startActivity(intent);
             }
         };
-        //
-        // создаем адаптер
         EventAdapter adapter = new EventAdapter(this, events,eventClickListener);
-        // устанавливаем для списка адаптер
         recyclerView.setAdapter(adapter);
-
-        /*ScrollView scrollView = new ScrollView(this);
-
-        TextView textView = new TextView(this);
-        textView.setText("");
-        textView.setLayoutParams(new ViewGroup.LayoutParams
-                (ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        textView.setTextSize(26);
-        scrollView.addView(textView);
-        setContentView(scrollView);*/
     }
 
     private void setInitialData() {
