@@ -35,11 +35,11 @@ public class MainActivity extends AppCompatActivity {
     }
     void onClick(int id){
         switch(id){
-            case 1000010: getIntent().putExtra("level","1");
-            case 1000004: getIntent().putExtra("level","2");
-            case 1000002: getIntent().putExtra("level","3");
-            case 1000001: getIntent().putExtra("level","4");
-            case 1000006: getIntent().putExtra("level","5");
+            case 1000010: getIntent().putExtra("level",1);
+            case 1000004: getIntent().putExtra("level",2);
+            case 1000002: getIntent().putExtra("level",3);
+            case 1000001: getIntent().putExtra("level",4);
+            case 1000006: getIntent().putExtra("level",5);
         }
         getIntent().putExtra("login",login);
         startActivity(intent);
