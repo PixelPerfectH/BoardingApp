@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
@@ -79,7 +80,8 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         void bindView(Task task) {
             this.task = task;
             if(!task.isActive){
-//                itemView.findViewById(R.id.CardViewItem).setBackgroundColor();
+                CardView cardView = itemView.findViewById(R.id.CardViewItem);
+                cardView.setCardBackgroundColor(context.getColor(R.color.white_transparent20));
 //                ImageView starIV = itemView.findViewById(R.id.IVisComplete);
 //                starIV.setImageResource(R.drawable.star);
             }

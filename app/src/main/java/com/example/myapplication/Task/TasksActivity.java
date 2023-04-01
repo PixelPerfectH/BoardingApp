@@ -66,6 +66,13 @@ public class TasksActivity extends AppCompatActivity {
 
         @Override
         protected void onStop() {
+            int currentScore =0;
+            for (int i = 0; i < tasksList.size(); i++) {
+                if(!tasksList.get(i).isActive()){
+                    currentScore++;
+                }
+            }
+            //Осталось только залить переменную в БД , а потом вывести в профиле
             TasksActivity.super.finish();
             super.onStop();
         }
@@ -86,8 +93,7 @@ public class TasksActivity extends AppCompatActivity {
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
             if (viewHolder instanceof TaskAdapter.ViewHolder) {
-                Task task  = tasksList.get(viewHolder.getAdapterPosition());//вот твой таск, наслаждайся
-                                                                            // спасибо, наслаждаюсь по полной
+                Task task  = tasksList.get(viewHolder.getAdapterPosition());
                 Gson gson = new Gson();
                 TaskComplete taskComplete = new TaskComplete(login, task.getName());
                 PostRequest postRequest = new PostRequest(gson.toJson(taskComplete));
@@ -104,7 +110,6 @@ public class TasksActivity extends AppCompatActivity {
                 tasksList.add(task);
                 taskAdapter = new TaskAdapter(tasksList, listener);
                 recyclerView.setAdapter(taskAdapter);
-                //
             }
         }
     }
