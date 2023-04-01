@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
+
     android:id="@+id/profile">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/pointsTV"
@@ -64,19 +65,11 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-    <TextView
-        android:id="@+id/leaderboard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="45sp"
-        android:textAlignment="center"
-        android:text="Leaderboard" />
-
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/three"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             tools:listitem="@layout/employee"
             tools:itemCount="3"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
