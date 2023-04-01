@@ -6,12 +6,12 @@
     android:layout_margin="8dp"
     app:cardCornerRadius="20dp"
     app:cardBackgroundColor="@color/main_purple"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:foreground="@color/white_transparent20">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        >
+        android:layout_height="200dp">
 
         <ImageView
             android:id="@+id/imageViewItem"

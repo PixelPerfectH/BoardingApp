@@ -4,13 +4,15 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.Task.TasksActivity;
 
 public class MainActivity extends AppCompatActivity {
+    String login;
+    ImageView avatar;
     Button level1btn,level2btn,level3btn,level4btn,level5btn;
     Intent intent;
     @SuppressLint("SetTextI18n")
@@ -18,9 +20,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activty_main);
-        TextView loginTextView = findViewById(R.id.LoginTextTV);
-        String login = getIntent().getExtras().get("login").toString();
-        loginTextView.setText("Прогресс: " + login);
+        login = getIntent().getExtras().get("login").toString();
         intent = new Intent(this, TasksActivity.class);
         level1btn = findViewById(R.id.button);
         level2btn = findViewById(R.id.button2);
@@ -35,13 +35,13 @@ public class MainActivity extends AppCompatActivity {
     }
     void onClick(int id){
         switch(id){
-            case 1000010: getIntent().putExtra("level","1");
-            case 1000004: getIntent().putExtra("level","2");
-            case 1000002: getIntent().putExtra("level","3");
-            case 1000001: getIntent().putExtra("level","4");
-            case 1000006: getIntent().putExtra("level","5");
+            case 1000010: getIntent().putExtra("level",1);
+            case 1000004: getIntent().putExtra("level",2);
+            case 1000002: getIntent().putExtra("level",3);
+            case 1000001: getIntent().putExtra("level",4);
+            case 1000006: getIntent().putExtra("level",5);
         }
+        getIntent().putExtra("login",login);
         startActivity(intent);
     }
-
 }
