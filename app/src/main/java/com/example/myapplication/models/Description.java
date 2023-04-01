@@ -20,7 +20,8 @@ public class Description extends AppCompatActivity {
         ScrollView scrollView = findViewById(R.id.scrollView);
         TextView descriptionTV = findViewById(R.id.DescriptionTV);
         TextView nameTV = findViewById(R.id.NameTV);
-        descriptionTV.setText("aaa");//сюда надо подгрузить текст из статьй
+        descriptionTV.setText(getIntent().getExtras().get("eventDescription").toString());
+        nameTV.setText(getIntent().getExtras().get("eventName").toString());
         descriptionTV.setTextSize(26);
         scrollView.addView(descriptionTV);
         setContentView(scrollView);

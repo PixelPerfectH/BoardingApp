@@ -5,13 +5,8 @@ import java.util.Date;
 public class Event {
     private String name;
     private String description;
-    Date date;
-
-    public Event(String name, String description, Date date) {
-        this.name = name;
-        this.description = description;
-        this.date = date;
-    }
+    private Date date;
+    private boolean willGo;
 
     public String getName() {
         return name;
@@ -25,15 +20,7 @@ public class Event {
         return date;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
+    public boolean willGo() {
+        return willGo;
     }
 }
