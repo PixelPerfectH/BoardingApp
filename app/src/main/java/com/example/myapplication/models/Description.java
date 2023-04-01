@@ -23,7 +23,6 @@ public class Description extends AppCompatActivity {
         descriptionTV.setText(getIntent().getExtras().get("eventDescription").toString());
         nameTV.setText(getIntent().getExtras().get("eventName").toString());
         descriptionTV.setTextSize(26);
-        scrollView.addView(descriptionTV);
         setContentView(scrollView);
     }
     @Override

@@ -66,7 +66,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
         void set(Event event){
             this.name.setText(event.getName());
             this.description.setText(event.getDescription());
-            this.date.setText(event.getDate().toString());//продумать дату, щас лень
+            //this.date.setText(event.getDate().toString());//продумать дату, щас лень
         }
     }
 }
