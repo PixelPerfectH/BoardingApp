@@ -41,6 +41,12 @@ public class TasksActivity extends AppCompatActivity {
             recyclerView.setAdapter(taskAdapter);
         }
 
+        @Override
+        protected void onStop() {
+            TasksActivity.super.finish();
+            super.onStop();
+        }
+
 
 
     class SwipeItem extends ItemTouchHelper.SimpleCallback {
