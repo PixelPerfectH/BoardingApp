@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.Login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,19 +9,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.myapplication.models.auth.LoginModel;
-import com.google.gson.Gson;
-
-import java.io.IOException;
-
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
+import com.example.myapplication.MainActivity;
+import com.example.myapplication.R;
 
 public class LoginActivity extends AppCompatActivity {
-    Button findWeatherBtn;
+    Button LoginBtn;
     EditText password;
     EditText login;
 
@@ -30,22 +22,23 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        findWeatherBtn = findViewById(R.id.LoginBtn);
+         LoginBtn = findViewById(R.id.LoginBtn);
         password = findViewById(R.id.editTextTextPassword);
         login = findViewById(R.id.editTextTextPersonName);
         Intent intent = new Intent(this, MainActivity.class);
-        findWeatherBtn.setOnClickListener(view -> {
+        LoginBtn.setOnClickListener(view -> {
             new LoginTask(login.getText().toString(), password.getText().toString()) {
                 @Override
                 protected void onPostExecute(Integer result) {
                     if (result == 200) {
-                        intent.putExtra("login",login.getText().toString());
+                        intent.putExtra("login", login.getText().toString());
                         startActivity(intent);
+                        LoginActivity.super.finish();
                     } else {
                         login.setText("");
                         password.setText("");
-                        Toast.makeText(getApplicationContext(),"Пользователя с таким логином и/" +
-                                "или паролем не существует!",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Пользователя с таким логином и/" +
+                                "или паролем не существует!", Toast.LENGTH_SHORT).show();
                     }
                 }
             }.execute("https://clerostyle.drawy.ru/api/auth/loginbypassword");
