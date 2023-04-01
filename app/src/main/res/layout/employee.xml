@@ -1,29 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:id="@+id/employee"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="20dp"
+    android:layout_margin="10dp"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@color/main_mint">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:textSize="35sp"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="Tomilov Matvey"
-
             />
 
         <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/place"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
             android:layout_weight="1"
+            android:textAlignment="center"
+            android:text="1"
             android:textSize="50sp"
-            android:text="1" />
+            />
     </LinearLayout>
 </androidx.cardview.widget.CardView>
