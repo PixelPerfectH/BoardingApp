@@ -10,14 +10,21 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.models.Level;
 import com.example.myapplication.models.Task;
+import com.example.myapplication.requests.GetRequest;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class TasksActivity extends AppCompatActivity {
+
+    private Gson gson = new Gson();
     private TextView mainTask;
     int level;
+    String login;
     private List<Task> taskList = new ArrayList<>(); //Этот массив надо как-то тасками заполнить
     //И перед завершением этот же массив обратно в БД отправлять , чтобы он обновлялся
     private TaskAdapter taskAdapter;
@@ -34,7 +41,24 @@ public class TasksActivity extends AppCompatActivity {
             RecyclerView recyclerView = findViewById(R.id.recyclerView_tasks);
             ItemTouchHelper.SimpleCallback callback = new SwipeItem(0,ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
             new ItemTouchHelper(callback).attachToRecyclerView(recyclerView);
-            level = getIntent().getIntExtra("level",1);// номер уровня
+            login = getIntent().getExtras().get("login").toString();
+            level = Integer.parseInt(getIntent().getExtras().get("level").toString());// номер уровня
+            GetRequest getRequest = new GetRequest();
+            String result;
+            try {
+                System.out.println(level);
+                result = getRequest.execute("https://clerostyle.drawy.ru/api/level/get?userName=" + "CleroStyle" + "&levelId=" + level).get();
+            } catch (ExecutionException | InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            if (result != null) {
+                // вот тебе объект уровня, наслаждайся
+                Level level = gson.fromJson(result, Level.class);
+                System.out.println(level.getName());
+                System.out.println(level.level);
+            }
+
+
             mainTask = findViewById(R.id.mainTaskTV);
             mainTask.setText("");//сюда надо главное задание из БД подгрузить(Можно и в переменную));
             taskAdapter = new TaskAdapter(taskList,listener);
