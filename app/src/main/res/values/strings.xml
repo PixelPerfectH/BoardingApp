@@ -3,4 +3,5 @@
     <string name="LoginTxt">Вход</string>
     <string name="nameHint">Name</string>
     <string name="passwordHint">Password</string>
+    <string name="new_events">New Events</string>
 </resources>
