@@ -18,6 +18,7 @@ import java.util.List;
 public class TasksActivity extends AppCompatActivity {
     private TextView mainTask;
     int level;
+    String login;
     private List<Task> taskList = new ArrayList<>(); //Этот массив надо как-то тасками заполнить
     //И перед завершением этот же массив обратно в БД отправлять , чтобы он обновлялся
     private TaskAdapter taskAdapter;
@@ -35,6 +36,7 @@ public class TasksActivity extends AppCompatActivity {
             ItemTouchHelper.SimpleCallback callback = new SwipeItem(0,ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
             new ItemTouchHelper(callback).attachToRecyclerView(recyclerView);
             level = getIntent().getIntExtra("level",1);// номер уровня
+            login = getIntent().getStringExtra("login");
             mainTask = findViewById(R.id.mainTaskTV);
             mainTask.setText("");//сюда надо главное задание из БД подгрузить(Можно и в переменную));
             taskAdapter = new TaskAdapter(taskList,listener);
