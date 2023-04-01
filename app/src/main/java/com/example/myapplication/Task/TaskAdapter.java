@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.drawable.RippleDrawable;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -19,7 +20,7 @@ import com.example.myapplication.models.Task;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
+public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>  {
     Context context;
     private final List<Task> mData;
     public final List<Task> FullData;
@@ -32,7 +33,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         context = parent.getContext();
         return new ViewHolder(view);
     }
-
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Task task = mData.get(position);
@@ -61,6 +61,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
     public Task getTask(int position){
         return FullData.get(position);
     }
+
     public interface TaskListener{
         void onTaskClick(View v, int position);
     }
@@ -82,12 +83,10 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
             if(!task.isActive){
                 CardView cardView = itemView.findViewById(R.id.CardViewItem);
                 cardView.setCardBackgroundColor(context.getColor(R.color.grey));
-//                ImageView starIV = itemView.findViewById(R.id.IVisComplete);
-//                starIV.setImageResource(R.drawable.star);
             }
             name.setText(task.getName());
             description.setText(task.getDescription());
-            //avatar.setImageBitmap(task.getUser().getAvatar());
+            //avatar.setImageBitmap(task.getUser().getAvatar());Убрать комментарий когда появятся фотки
         }
     }
 }

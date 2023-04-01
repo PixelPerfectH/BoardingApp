@@ -3,6 +3,7 @@ package com.example.myapplication.Task;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,55 +30,47 @@ public class TasksActivity extends AppCompatActivity {
     String login;
 
     private TaskAdapter taskAdapter;
-        private final TaskAdapter.TaskListener listener = new TaskAdapter.TaskListener() {
-            @Override
-            public void onTaskClick(View v, int position) {
-                Task task = taskAdapter.getTask(position);
-            }
-        };
+    private final TaskAdapter.TaskListener listener = new TaskAdapter.TaskListener() {
         @Override
-        protected void onCreate(Bundle savedInstanceState){
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_tasks);
-            recyclerView = findViewById(R.id.recyclerView_tasks);
-            ItemTouchHelper.SimpleCallback callback = new SwipeItem(0,ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
-            new ItemTouchHelper(callback).attachToRecyclerView(recyclerView);
-            login = getIntent().getExtras().get("login").toString();
-            level = Integer.parseInt(getIntent().getExtras().get("level").toString());// номер уровня
-            GetRequest getRequest = new GetRequest();
-            String result;
-            try {
-                result = getRequest.execute("https://clerostyle.drawy.ru/api/level/get?userName=" + "CleroStyle" + "&levelId=" + level).get();
-                System.out.println(level);
-            } catch (ExecutionException | InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-            if (result != null) {
-                Level level = gson.fromJson(result, Level.class);
-                TextView mainTask = findViewById(R.id.mainTaskTV);
-                mainTask.setText(level.getName());
-                tasksList = level.getTasks();
-                taskAdapter = new TaskAdapter(tasksList, listener);
-                recyclerView.setAdapter(taskAdapter);
-            }
+        public void onTaskClick(View v, int position) {
+            Task task = taskAdapter.getTask(position);
+        }
+    };
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_tasks);
+        recyclerView = findViewById(R.id.recyclerView_tasks);
+        ItemTouchHelper.SimpleCallback callback = new SwipeItem(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
+        new ItemTouchHelper(callback).attachToRecyclerView(recyclerView);
+        login = getIntent().getExtras().get("login").toString();
+        level = Integer.parseInt(getIntent().getExtras().get("level").toString());// номер уровня
+        GetRequest getRequest = new GetRequest();
+        String result;
+        try {
+            result = getRequest.execute("https://clerostyle.drawy.ru/api/level/get?userName=" + login + "&levelId=" + level).get();
+            System.out.println(level);
+        } catch (ExecutionException | InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        if (result != null) {
+            Level level = gson.fromJson(result, Level.class);
+            TextView mainTask = findViewById(R.id.mainTaskTV);
+            mainTask.setText(level.getName());
+            tasksList = level.getTasks();
+            taskAdapter = new TaskAdapter(tasksList, listener);
+            recyclerView.setAdapter(taskAdapter);
         }
 
-        @Override
-        protected void onStop() {
-            int currentScore =0;
-            if(tasksList != null) {
-                for (int i = 0; i < tasksList.size(); i++) {
-                    if (!tasksList.get(i).isActive()) {
-                        currentScore++;
-                    }
-                }
-                //Осталось только залить переменную в БД , а потом вывести в профиле
-                TasksActivity.super.finish();
-                super.onStop();
-            }
-        }
+    }
 
+    @Override
+    protected void onStop() {
+        //Осталось только залить переменную в БД , а потом вывести в профиле
+        TasksActivity.super.finish();
+        super.onStop();
+    }
 
 
     class SwipeItem extends ItemTouchHelper.SimpleCallback {
@@ -94,7 +87,7 @@ public class TasksActivity extends AppCompatActivity {
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
             if (viewHolder instanceof TaskAdapter.ViewHolder) {
-                Task task  = tasksList.get(viewHolder.getAdapterPosition());
+                Task task = tasksList.get(viewHolder.getAdapterPosition());
                 Gson gson = new Gson();
                 TaskComplete taskComplete = new TaskComplete(login, task.getName());
                 PostRequest postRequest = new PostRequest(gson.toJson(taskComplete));
@@ -106,7 +99,11 @@ public class TasksActivity extends AppCompatActivity {
                 } catch (ExecutionException | InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-                task.isActive = false;
+                if (!task.isActive) {
+                    Toast.makeText(TasksActivity.this, "Это задание уже выполнено!", Toast.LENGTH_SHORT).show();
+                } else {
+                    task.isActive = false;
+                }
                 tasksList.remove(viewHolder.getAdapterPosition());
                 tasksList.add(task);
                 taskAdapter = new TaskAdapter(tasksList, listener);
