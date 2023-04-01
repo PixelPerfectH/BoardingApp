@@ -17,6 +17,8 @@ import java.util.List;
 
 public class TasksActivity extends AppCompatActivity {
     private TextView mainTask;
+    private List<Task> taskList = new ArrayList<>(); //Этот массив надо как-то тасками заполнить
+    //И перед завершением этот же массив обратно в БД отправлять , чтобы он обновлялся
     private TaskAdapter taskAdapter;
         private final TaskAdapter.TaskListener listener = new TaskAdapter.TaskListener() {
             @Override
@@ -32,12 +34,8 @@ public class TasksActivity extends AppCompatActivity {
             ItemTouchHelper.SimpleCallback callback = new SwipeItem(0,ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
             new ItemTouchHelper(callback).attachToRecyclerView(recyclerView);
             mainTask = findViewById(R.id.mainTaskTV);
-            Task task1 = new Task();//просто для проверки
-            Task task2 = new Task();//просто для проверки
-            List<Task> ltask = new ArrayList<>();//просто для проверки
-            ltask.add(task1);//просто для проверки
-            ltask.add(task2);//просто для проверки
-            taskAdapter = new TaskAdapter(ltask,listener);
+            mainTask.setText("");//сюда надо главное задание из БД подгрузить(Можно и в переменную));
+            taskAdapter = new TaskAdapter(taskList,listener);
             recyclerView.setAdapter(taskAdapter);
         }
 
