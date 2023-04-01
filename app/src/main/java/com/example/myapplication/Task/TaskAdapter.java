@@ -81,7 +81,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
             this.task = task;
             if(!task.isActive){
                 CardView cardView = itemView.findViewById(R.id.CardViewItem);
-                cardView.setCardBackgroundColor(context.getColor(R.color.white_transparent20));
+                cardView.setCardBackgroundColor(context.getColor(R.color.grey));
 //                ImageView starIV = itemView.findViewById(R.id.IVisComplete);
 //                starIV.setImageResource(R.drawable.star);
             }

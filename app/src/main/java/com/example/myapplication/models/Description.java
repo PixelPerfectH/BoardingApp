@@ -7,19 +7,27 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.R;
+import com.example.myapplication.Task.TasksActivity;
+
+import org.w3c.dom.Text;
+
 public class Description extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.description);
-        ScrollView scrollView = new ScrollView(this);
-
-        TextView textView = new TextView(this);
-        textView.setText("aaa");
-        textView.setLayoutParams(new ViewGroup.LayoutParams
-                (ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        textView.setTextSize(26);
-        scrollView.addView(textView);
+        setContentView(R.layout.event_description);
+        ScrollView scrollView = findViewById(R.id.scrollView);
+        TextView descriptionTV = findViewById(R.id.DescriptionTV);
+        TextView nameTV = findViewById(R.id.NameTV);
+        descriptionTV.setText("aaa");//сюда надо подгрузить текст из статьй
+        descriptionTV.setTextSize(26);
+        scrollView.addView(descriptionTV);
         setContentView(scrollView);
+    }
+    @Override
+    protected void onStop() {
+        Description.super.finish();
+        super.onStop();
     }
 }

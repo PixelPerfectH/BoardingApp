@@ -27,8 +27,7 @@ public class TasksActivity extends AppCompatActivity {
     private List<Task> tasksList;
     int level;
     String login;
-    //Этот массив надо как-то тасками заполнить
-    //И перед завершением этот же массив обратно в БД отправлять , чтобы он обновлялся
+
     private TaskAdapter taskAdapter;
         private final TaskAdapter.TaskListener listener = new TaskAdapter.TaskListener() {
             @Override
@@ -67,14 +66,16 @@ public class TasksActivity extends AppCompatActivity {
         @Override
         protected void onStop() {
             int currentScore =0;
-            for (int i = 0; i < tasksList.size(); i++) {
-                if(!tasksList.get(i).isActive()){
-                    currentScore++;
+            if(tasksList != null) {
+                for (int i = 0; i < tasksList.size(); i++) {
+                    if (!tasksList.get(i).isActive()) {
+                        currentScore++;
+                    }
                 }
+                //Осталось только залить переменную в БД , а потом вывести в профиле
+                TasksActivity.super.finish();
+                super.onStop();
             }
-            //Осталось только залить переменную в БД , а потом вывести в профиле
-            TasksActivity.super.finish();
-            super.onStop();
         }
 
 

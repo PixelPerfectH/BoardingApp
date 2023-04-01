@@ -1,10 +1,14 @@
 package com.example.myapplication.Events;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.myapplication.R;
 import com.example.myapplication.models.Description;
@@ -12,44 +16,25 @@ import com.example.myapplication.models.Description;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class EventsActivity extends AppCompatActivity {
+public class EventsActivity extends Fragment {
 
-    ArrayList<Event> events=new ArrayList<Event>();
+    ArrayList<Event> events=new ArrayList<>();
+    public EventsActivity(){super(R.layout.list_events);}
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        /*super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);*/
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_events);
-        // начальная инициализация списка
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         setInitialData();
-        RecyclerView recyclerView = findViewById(R.id.recycler);
-        Intent intent = new Intent(this, Description.class);
-        // определяем слушателя нажатия элемента в списке
+        RecyclerView recyclerView = view.findViewById(R.id.recycler);
+        Intent intent = new Intent(getActivity(), Description.class);
         EventAdapter.OnEventClickListener eventClickListener = new EventAdapter.OnEventClickListener() {
             @Override
             public void onEventClick(Event state, int position) {
-
-                /*Toast.makeText(getApplicationContext(), "Был выбран пункт " + state.getName(),
-                        Toast.LENGTH_SHORT).show();*/
                 startActivity(intent);
             }
         };
-        //
-        // создаем адаптер
-        EventAdapter adapter = new EventAdapter(this, events,eventClickListener);
-        // устанавливаем для списка адаптер
+        EventAdapter adapter = new EventAdapter(getActivity(), events,eventClickListener);
         recyclerView.setAdapter(adapter);
-
-        /*ScrollView scrollView = new ScrollView(this);
-
-        TextView textView = new TextView(this);
-        textView.setText("");
-        textView.setLayoutParams(new ViewGroup.LayoutParams
-                (ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        textView.setTextSize(26);
-        scrollView.addView(textView);
-        setContentView(scrollView);*/
     }
 
     private void setInitialData() {
