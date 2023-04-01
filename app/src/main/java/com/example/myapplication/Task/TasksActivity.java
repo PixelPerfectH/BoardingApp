@@ -12,7 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.R;
 import com.example.myapplication.models.Level;
 import com.example.myapplication.models.Task;
+import com.example.myapplication.models.TaskComplete;
 import com.example.myapplication.requests.GetRequest;
+import com.example.myapplication.requests.PostRequest;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -85,6 +87,18 @@ public class TasksActivity extends AppCompatActivity {
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
             if (viewHolder instanceof TaskAdapter.ViewHolder) {
                 Task task  = tasksList.get(viewHolder.getAdapterPosition());//вот твой таск, наслаждайся
+                                                                            // спасибо, наслаждаюсь по полной
+                Gson gson = new Gson();
+                TaskComplete taskComplete = new TaskComplete(login, task.getName());
+                PostRequest postRequest = new PostRequest(gson.toJson(taskComplete));
+                try {
+                    Integer responseCode = postRequest.execute("https://clerostyle.drawy.ru/api/task/complete").get();
+                    if (responseCode == 200) {
+                        System.out.println("OK");
+                    }
+                } catch (ExecutionException | InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
                 task.isActive = false;
                 tasksList.remove(viewHolder.getAdapterPosition());
                 tasksList.add(task);

@@ -1,4 +1,4 @@
-package com.example.myapplication.Login;
+package com.example.myapplication.requests;
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -14,24 +14,22 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class LoginTask extends AsyncTask<String, Void, Integer> {
-    private static final String TAG = "LoginTask";
+public class PostRequest extends AsyncTask<String, Void, Integer> {
+    private static final String TAG = "PostRequest";
     private static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
     private static final Gson gson = new GsonBuilder().setLenient().create();
 
-    private final String username;
-    private final String password;
+    private final String json;
 
-    public LoginTask(String username, String password) {
-        this.username = username;
-        this.password = password;
+    public PostRequest(String json) {
+        this.json = json;
     }
 
     @Override
     protected Integer doInBackground(String... params) {
         String url = params[0];
         OkHttpClient client = new OkHttpClient();
-        RequestBody requestBody = RequestBody.create(gson.toJson(new LoginRequest(username, password)), JSON);
+        RequestBody requestBody = RequestBody.create(json, JSON);
         Request request = new Request.Builder()
                 .url(url)
                 .post(requestBody)
@@ -48,16 +46,6 @@ public class LoginTask extends AsyncTask<String, Void, Integer> {
         } catch (IOException e) {
             Log.e(TAG, "Error executing request", e);
             return -1;
-        }
-    }
-
-    public static class LoginRequest {
-        public final String username;
-        public final String password;
-
-        public LoginRequest(String username, String password) {
-            this.username = username;
-            this.password = password;
         }
     }
 }
