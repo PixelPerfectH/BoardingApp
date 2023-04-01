@@ -20,17 +20,17 @@ public class EventsActivity extends Fragment {
 
     ArrayList<Event> events=new ArrayList<>();
     public EventsActivity(){super(R.layout.list_events);}
-
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setInitialData();
         RecyclerView recyclerView = view.findViewById(R.id.recycler);
         Intent intent = new Intent(getActivity(), Description.class);
+        //Заполнить массив events
         EventAdapter.OnEventClickListener eventClickListener = new EventAdapter.OnEventClickListener() {
             @Override
             public void onEventClick(Event state, int position) {
+                intent.putExtra("eventName", events.get(position).getName());
+                intent.putExtra("eventDescription", events.get(position).getDescription());
                 startActivity(intent);
             }
         };
@@ -39,11 +39,11 @@ public class EventsActivity extends Fragment {
     }
 
     private void setInitialData() {
-        events.add(new Event ("Бразилия", "Бразилиа", new Date()));
-        events.add(new Event ("Аргентина", "Буэнос-Айрес", new Date()));
-        events.add(new Event ("Колумбия", "Богота", new Date()));
-        events.add(new Event ("Уругвай", "Монтевидео",new Date()));
-        events.add(new Event ("Чили", "Сантьяго", new Date()));
+//        events.add(new Event ("Бразилия", "Бразилиа", new Date()));
+//        events.add(new Event ("Аргентина", "Буэнос-Айрес", new Date()));
+//        events.add(new Event ("Колумбия", "Богота", new Date()));
+//        events.add(new Event ("Уругвай", "Монтевидео",new Date()));
+//        events.add(new Event ("Чили", "Сантьяго", new Date()));
     }
 
 }

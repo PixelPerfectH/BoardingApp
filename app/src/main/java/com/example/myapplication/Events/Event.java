@@ -6,7 +6,6 @@ public class Event {
     private String name;
     private String description;
     Date date;
-
     public Event(String name, String description, Date date) {
         this.name = name;
         this.description = description;
