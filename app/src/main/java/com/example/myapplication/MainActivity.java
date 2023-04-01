@@ -21,33 +21,34 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activty_main);
         login = getIntent().getExtras().get("login").toString();
+        System.out.println(login);
         intent = new Intent(this, TasksActivity.class);
         level1btn = findViewById(R.id.button);
         level2btn = findViewById(R.id.button2);
         level3btn = findViewById(R.id.button3);
         level4btn = findViewById(R.id.button4);
         level5btn = findViewById(R.id.button5);
-        level1btn.setOnClickListener(view -> onClick(level1btn.getId()));
-        level2btn.setOnClickListener(view -> onClick(level2btn.getId()));
-        level3btn.setOnClickListener(view -> onClick(level3btn.getId()));
-        level4btn.setOnClickListener(view -> onClick(level4btn.getId()));
-        level5btn.setOnClickListener(view -> onClick(level5btn.getId()));
+        level1btn.setOnClickListener(view -> onClick(1));
+        level2btn.setOnClickListener(view -> onClick(2));
+        level3btn.setOnClickListener(view -> onClick(3));
+        level4btn.setOnClickListener(view -> onClick(4));
+        level5btn.setOnClickListener(view -> onClick(5));
     }
 
     void onClick(int id) {
         switch (id) {
-            case 1000010:
-                getIntent().putExtra("level", "1");
-            case 1000004:
-                getIntent().putExtra("level", "2");
-            case 1000002:
-                getIntent().putExtra("level", "3");
-            case 1000001:
-                getIntent().putExtra("level", "4");
-            case 1000006:
-                getIntent().putExtra("level", "5");
+            case 1:
+                intent.putExtra("level", "1");
+            case 2:
+                intent.putExtra("level", "2");
+            case 3:
+                intent.putExtra("level", "3");
+            case 4:
+                intent.putExtra("level", "4");
+            case 5:
+                intent.putExtra("level", "5");
         }
-        getIntent().putExtra("login",login);
+        intent.putExtra("login",login);
         startActivity(intent);
     }
 }
