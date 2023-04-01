@@ -17,6 +17,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
+
     BottomNavigationView bottomNavigationView;
     EventsActivity eventsFragment = new EventsActivity();
     LevelsFragment levelsFragment = new LevelsFragment();
