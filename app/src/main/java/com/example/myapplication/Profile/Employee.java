@@ -1,4 +1,4 @@
-package com.example.myapplication.LeaderBoard;
+package com.example.myapplication.Profile;
 
 public class Employee {
     private String name;

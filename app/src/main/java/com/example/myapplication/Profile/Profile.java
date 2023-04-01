@@ -1,6 +1,5 @@
-package com.example.myapplication.LeaderBoard;
+package com.example.myapplication.Profile;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,16 +8,15 @@ import com.example.myapplication.R;
 
 import java.util.ArrayList;
 
-public class LeaderBoard extends AppCompatActivity {
+public class Profile extends AppCompatActivity {
     ArrayList<Employee> employees=new ArrayList<Employee>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.leaderboard);
+        setContentView(R.layout.activity_user_profile);
         // начальная инициализация списка
         setInitialData();
         RecyclerView recyclerView = findViewById(R.id.three);
-        Intent intent = new Intent(this, Employee.class);
         // создаем адаптер
         EmployeeAdapter adapter = new EmployeeAdapter(this, employees);
         // устанавливаем для списка адаптер

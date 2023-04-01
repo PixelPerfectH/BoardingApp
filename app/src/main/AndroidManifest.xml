@@ -31,6 +31,16 @@
             android:screenOrientation="portrait">
         </activity>
         <activity
+            android:name=".Events.EventsActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".models.Description"
+            android:exported="true"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
             android:name=".Task.TasksActivity"
             android:exported="true"
             android:screenOrientation="portrait">
