@@ -19,6 +19,7 @@ public class Profile extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        employees.clear();
         // начальная инициализация списка
         setInitialData();
         RecyclerView recyclerView = view.findViewById(R.id.three);
