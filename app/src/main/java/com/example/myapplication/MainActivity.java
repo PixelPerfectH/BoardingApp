@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         login = getIntent().getExtras().get("login").toString();
         System.out.println(login);
         intent = new Intent(this, TasksActivity.class);
-        level1btn = findViewById(R.id.button);
+        level1btn = findViewById(R.id.button1);
         level2btn = findViewById(R.id.button2);
         level3btn = findViewById(R.id.button3);
         level4btn = findViewById(R.id.button4);
@@ -39,14 +39,19 @@ public class MainActivity extends AppCompatActivity {
         switch (id) {
             case 1:
                 intent.putExtra("level", "1");
+                break;
             case 2:
                 intent.putExtra("level", "2");
+                break;
             case 3:
                 intent.putExtra("level", "3");
+                break;
             case 4:
                 intent.putExtra("level", "4");
+                break;
             case 5:
                 intent.putExtra("level", "5");
+                break;
         }
         intent.putExtra("login",login);
         startActivity(intent);

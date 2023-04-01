@@ -71,14 +71,13 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
             description = itemView.findViewById(R.id.textViewItem);
             avatar = itemView.findViewById(R.id.imageViewItem);
             itemView.setOnClickListener(v -> listener.onTaskClick(v, getAdapterPosition()));
-
         }
 
         void bindView(Task task) {
             this.task = task;
             name.setText(task.getName());
             description.setText(task.getDescription());
-            avatar.setImageBitmap(task.getUser().getAvatar());
+            //avatar.setImageBitmap(task.getUser().getAvatar());
         }
     }
 }

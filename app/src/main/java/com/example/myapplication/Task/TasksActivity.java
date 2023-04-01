@@ -23,6 +23,7 @@ public class TasksActivity extends AppCompatActivity {
 
     private Gson gson = new Gson();
     private TextView mainTask;
+    private List<Task> tasksList;
     int level;
     String login;
     private List<Task> taskList = new ArrayList<>(); //Этот массив надо как-то тасками заполнить
@@ -46,23 +47,20 @@ public class TasksActivity extends AppCompatActivity {
             GetRequest getRequest = new GetRequest();
             String result;
             try {
-                System.out.println(level);
                 result = getRequest.execute("https://clerostyle.drawy.ru/api/level/get?userName=" + "CleroStyle" + "&levelId=" + level).get();
+                System.out.println(level);
             } catch (ExecutionException | InterruptedException e) {
                 throw new RuntimeException(e);
             }
             if (result != null) {
-                // вот тебе объект уровня, наслаждайся
                 Level level = gson.fromJson(result, Level.class);
-                System.out.println(level.getName());
-                System.out.println(level.level);
+                mainTask = findViewById(R.id.mainTaskTV);
+                System.out.println(level.getTasks());
+                mainTask.setText(level.getName());
+                tasksList = level.getTasks();
+                taskAdapter = new TaskAdapter(tasksList, listener);
+                recyclerView.setAdapter(taskAdapter);
             }
-
-
-            mainTask = findViewById(R.id.mainTaskTV);
-            mainTask.setText("");//сюда надо главное задание из БД подгрузить(Можно и в переменную));
-            taskAdapter = new TaskAdapter(taskList,listener);
-            recyclerView.setAdapter(taskAdapter);
 
         }
 
@@ -88,6 +86,7 @@ public class TasksActivity extends AppCompatActivity {
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
             if (viewHolder instanceof TaskAdapter.ViewHolder) {
+
                 //метод свайпа должен удалять выполненную задачу из БД, Коля это тебе
                 taskAdapter.removeTask(viewHolder.getAdapterPosition());
             }
