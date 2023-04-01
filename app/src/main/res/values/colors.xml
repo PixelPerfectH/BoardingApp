@@ -9,5 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="main_purple">#7f7edb</color>
     <color name="main_mint">#62C1CA</color>
-    <color name="white_transparent20">#80ffffff</color>
+    <color name="white_transparent20">#20ffffff</color>
 </resources>

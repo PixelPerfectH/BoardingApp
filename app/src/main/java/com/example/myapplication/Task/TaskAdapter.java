@@ -1,6 +1,8 @@
 package com.example.myapplication.Task;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.drawable.RippleDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +23,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
     private final List<Task> mData;
     public final List<Task> FullData;
     private final TaskListener listener;
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -75,6 +78,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
         void bindView(Task task) {
             this.task = task;
+            if(!task.isActive){
+                itemView.findViewById(R.id.CardViewItem).setBackgroundColor();
+//                ImageView starIV = itemView.findViewById(R.id.IVisComplete);
+//                starIV.setImageResource(R.drawable.star);
+            }
             name.setText(task.getName());
             description.setText(task.getDescription());
             //avatar.setImageBitmap(task.getUser().getAvatar());

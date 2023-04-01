@@ -4,7 +4,7 @@ public class Task {
     private String name;
     public String description;
     public User user;
-    public boolean isActive;
+    public boolean isActive = true;
 
     public String getName() {
         return name;

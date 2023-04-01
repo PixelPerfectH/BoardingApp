@@ -20,13 +20,12 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class TasksActivity extends AppCompatActivity {
-
-    private Gson gson = new Gson();
-    private TextView mainTask;
+    private RecyclerView recyclerView;
+    private final Gson gson = new Gson();
     private List<Task> tasksList;
     int level;
     String login;
-    private List<Task> taskList = new ArrayList<>(); //Этот массив надо как-то тасками заполнить
+    //Этот массив надо как-то тасками заполнить
     //И перед завершением этот же массив обратно в БД отправлять , чтобы он обновлялся
     private TaskAdapter taskAdapter;
         private final TaskAdapter.TaskListener listener = new TaskAdapter.TaskListener() {
@@ -39,7 +38,7 @@ public class TasksActivity extends AppCompatActivity {
         protected void onCreate(Bundle savedInstanceState){
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_tasks);
-            RecyclerView recyclerView = findViewById(R.id.recyclerView_tasks);
+            recyclerView = findViewById(R.id.recyclerView_tasks);
             ItemTouchHelper.SimpleCallback callback = new SwipeItem(0,ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
             new ItemTouchHelper(callback).attachToRecyclerView(recyclerView);
             login = getIntent().getExtras().get("login").toString();
@@ -54,8 +53,7 @@ public class TasksActivity extends AppCompatActivity {
             }
             if (result != null) {
                 Level level = gson.fromJson(result, Level.class);
-                mainTask = findViewById(R.id.mainTaskTV);
-                System.out.println(level.getTasks());
+                TextView mainTask = findViewById(R.id.mainTaskTV);
                 mainTask.setText(level.getName());
                 tasksList = level.getTasks();
                 taskAdapter = new TaskAdapter(tasksList, listener);
@@ -86,9 +84,13 @@ public class TasksActivity extends AppCompatActivity {
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
             if (viewHolder instanceof TaskAdapter.ViewHolder) {
-
-                //метод свайпа должен удалять выполненную задачу из БД, Коля это тебе
-                taskAdapter.removeTask(viewHolder.getAdapterPosition());
+                Task task  = tasksList.get(viewHolder.getAdapterPosition());//вот твой таск, наслаждайся
+                task.isActive = false;
+                tasksList.remove(viewHolder.getAdapterPosition());
+                tasksList.add(task);
+                taskAdapter = new TaskAdapter(tasksList, listener);
+                recyclerView.setAdapter(taskAdapter);
+                //
             }
         }
     }
