@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activty_main);
         TextView loginTextView = findViewById(R.id.LoginTextTV);
-        String login = getIntent().getExtras().get("1").toString();
+        String login = getIntent().getExtras().get("login").toString();
         loginTextView.setText(login);
 
     }

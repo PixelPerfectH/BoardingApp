@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.myapplication.models.auth.LoginModel;
 import com.google.gson.Gson;
@@ -32,15 +33,19 @@ public class LoginActivity extends AppCompatActivity {
         findWeatherBtn = findViewById(R.id.LoginBtn);
         password = findViewById(R.id.editTextTextPassword);
         login = findViewById(R.id.editTextTextPersonName);
-        Intent intent = new Intent(this, TasksActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         findWeatherBtn.setOnClickListener(view -> {
             new LoginTask(login.getText().toString(), password.getText().toString()) {
                 @Override
                 protected void onPostExecute(Integer result) {
                     if (result == 200) {
-                        // тут перекидывай на следующую страницу
+                        intent.putExtra("login",login.getText().toString());
+                        startActivity(intent);
                     } else {
-                        // тут ошибку выводи
+                        login.setText("");
+                        password.setText("");
+                        Toast.makeText(getApplicationContext(),"Пользователя с таким логином и/" +
+                                "или паролем не существует!",Toast.LENGTH_SHORT).show();
                     }
                 }
             }.execute("https://clerostyle.drawy.ru/api/auth/loginbypassword");
