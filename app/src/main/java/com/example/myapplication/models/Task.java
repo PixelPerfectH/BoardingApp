@@ -4,6 +4,7 @@ public class Task {
     private String name;
     public String description;
     public User user;
+    public boolean isActive;
 
     public String getName() {
         return name;
@@ -16,4 +17,6 @@ public class Task {
     public User getUser() {
         return user;
     }
+
+    public boolean isActive() { return isActive; }
 }
