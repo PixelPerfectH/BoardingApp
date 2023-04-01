@@ -41,11 +41,10 @@ public class TasksActivity extends AppCompatActivity {
             RecyclerView recyclerView = findViewById(R.id.recyclerView_tasks);
             ItemTouchHelper.SimpleCallback callback = new SwipeItem(0,ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
             new ItemTouchHelper(callback).attachToRecyclerView(recyclerView);
-            login = getIntent().getStringExtra("login");
-            level = getIntent().getIntExtra("level",1);// номер уровня
-
+            login = getIntent().getExtras().get("login").toString();
+            level = Integer.parseInt(getIntent().getExtras().get("level").toString());// номер уровня
             GetRequest getRequest = new GetRequest();
-            String result = null;
+            String result;
             try {
                 System.out.println(level);
                 result = getRequest.execute("https://clerostyle.drawy.ru/api/level/get?userName=" + "CleroStyle" + "&levelId=" + level).get();
