@@ -14,6 +14,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.models.Description;
 import com.example.myapplication.requests.GetRequest;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -40,7 +41,7 @@ public class EventsActivity extends Fragment {
         }
         if (result != null) {
             Gson gson = new Gson();
-            events = gson.fromJson(result, ArrayList.class);
+            events = gson.fromJson(result, new TypeToken<List<Event>>(){}.getType());
         }
         EventAdapter.OnEventClickListener eventClickListener = (state, position) -> {
             intent.putExtra("eventName", events.get(position).getName());
