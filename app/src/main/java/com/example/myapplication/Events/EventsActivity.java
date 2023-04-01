@@ -21,6 +21,7 @@ public class EventsActivity extends Fragment {
     ArrayList<Event> events=new ArrayList<>();
     public EventsActivity(){super(R.layout.list_events);}
 
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
