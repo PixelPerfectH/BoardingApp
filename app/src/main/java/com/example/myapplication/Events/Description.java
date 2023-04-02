@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.R;
 
 public class Description extends AppCompatActivity {
-
+    String login;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +19,7 @@ public class Description extends AppCompatActivity {
         ScrollView scrollView = findViewById(R.id.scrollView);
         TextView descriptionTV = findViewById(R.id.DescriptionTV);
         TextView nameTV = findViewById(R.id.NameTV);
+        login = getIntent().getExtras().get("login").toString();
         descriptionTV.setText(getIntent().getExtras().get("eventDescription").toString());
         nameTV.setText(getIntent().getExtras().get("eventName").toString());
         descriptionTV.setTextSize(26);

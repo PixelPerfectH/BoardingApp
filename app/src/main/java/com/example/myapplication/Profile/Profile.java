@@ -59,8 +59,8 @@ public class Profile extends Fragment {
             Gson gson = new Gson();
             employees = gson.fromJson(result, new TypeToken<List<Employee>>() {
             }.getType());
-            //получение баллов
-            employees = gson.fromJson(result, new TypeToken<List<Employee>>(){}.getType());
+            employees = gson.fromJson(result, new TypeToken<List<Employee>>() {
+            }.getType());
         }
         if (userResult != null) {
             Gson gson = new Gson();
@@ -69,13 +69,11 @@ public class Profile extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.three);
         yourPlaceTV.setText(Integer.toString(employees.get(employees.size() - 1).getPlace()));
         nameTV.setText(employees.get(employees.size() - 1).getName());
-        nameMainTV.setText(user.getFirstName()+" "+user.getLastName());
+        nameMainTV.setText(user.getFirstName() + " " + user.getLastName());
         pointsTV.setText(Integer.toString(employees.get(employees.size() - 1).getPoints()));
         employees.remove(employees.size() - 1);
         avatar.setImageBitmap(user.getAvatar());
         EmployeeAdapter adapter = new EmployeeAdapter(getActivity(), employees);
-        // устанавливаем для списка адаптер
         recyclerView.setAdapter(adapter);
-
     }
 }
