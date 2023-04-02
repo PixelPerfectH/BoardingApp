@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-
+    android:background="@drawable/bg"
     android:id="@+id/profile">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,19 +29,20 @@
             android:layout_margin="10dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="44dp"
-            android:text="hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
             android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/avatarIV" />
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:layout_marginTop="29dp"
-            android:layout_marginEnd="12dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="44dp"
+            android:layout_marginEnd="20dp"
+            android:src="@drawable/award"
             app:layout_constraintEnd_toStartOf="@+id/pointsTV"
-            app:layout_constraintTop_toBottomOf="@+id/nameTV" />
+            app:layout_constraintTop_toBottomOf="@+id/nameTV"
+            app:tint="#EDAB03" />
 
         <TextView
             android:id="@+id/nameTV"
@@ -52,7 +53,8 @@
             android:text="Горчатов Родион"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:textStyle="bold"/>
 
         <ImageView
             android:id="@+id/avatarIV"
@@ -75,12 +77,12 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             />
 
-        <include layout="@layout/employee"
-            android:id="@+id/you"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            />
+    <include
+        android:id="@+id/you"
+        layout="@layout/employee"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp" />
 
 
 </LinearLayout>
