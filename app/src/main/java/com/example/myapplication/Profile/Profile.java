@@ -19,19 +19,13 @@ public class Profile extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        employees.clear();
+        //Заполни массив employees
         // начальная инициализация списка
-        setInitialData();
         RecyclerView recyclerView = view.findViewById(R.id.three);
         // создаем адаптер
         EmployeeAdapter adapter = new EmployeeAdapter(getActivity(), employees);
         // устанавливаем для списка адаптер
         recyclerView.setAdapter(adapter);
 
-    }
-    private void setInitialData() {
-        employees.add(new Employee ("aaaaaaaa", 1));
-        employees.add(new Employee ("bbbbbbbbb", 2));
-        employees.add(new Employee ("ccccccc", 3));
     }
 }
