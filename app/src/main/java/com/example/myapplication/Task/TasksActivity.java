@@ -99,7 +99,7 @@ public class TasksActivity extends AppCompatActivity {
                 } catch (ExecutionException | InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-                if (!task.isActive) {
+                if (!task.isActive()) {
                     Toast.makeText(TasksActivity.this, "Это задание уже выполнено!", Toast.LENGTH_SHORT).show();
                 } else {
                     task.isActive = false;

@@ -80,7 +80,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>  {
 
         void bindView(Task task) {
             this.task = task;
-            if(!task.isActive){
+            if(!task.isActive()){
                 CardView cardView = itemView.findViewById(R.id.CardViewItem);
                 cardView.setCardBackgroundColor(context.getColor(R.color.grey));
             }
