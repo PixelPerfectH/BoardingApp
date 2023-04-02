@@ -2,7 +2,6 @@ package com.example.myapplication.Events;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,13 +10,11 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.myapplication.R;
-import com.example.myapplication.models.Description;
 import com.example.myapplication.requests.GetRequest;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 

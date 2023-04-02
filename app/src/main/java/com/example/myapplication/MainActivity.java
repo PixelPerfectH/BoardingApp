@@ -1,18 +1,14 @@
 package com.example.myapplication;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.Events.EventsActivity;
 import com.example.myapplication.Profile.Profile;
-import com.example.myapplication.Task.TasksActivity;
+import com.example.myapplication.Task.LevelsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -28,11 +24,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
-        /*if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.fragment_container_view, LevelsFragment.class,null)
-                    .commit();
-        }*/
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container_view, profileFragment).commit();
         bottomNavigationView.setOnItemSelectedListener(

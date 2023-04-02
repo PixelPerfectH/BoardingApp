@@ -8,8 +8,8 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:icon="@mipmap/rns_icon"
+        android:label="Rns Companion"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31"
@@ -36,7 +36,7 @@
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".models.Description"
+            android:name=".Events.Description"
             android:exported="true"
             android:screenOrientation="portrait">
         </activity>

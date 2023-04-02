@@ -86,6 +86,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>  {
             }
             name.setText(task.getName());
             description.setText(task.getDescription());
+            //avatar.setImageBitmap(task.);//вот здесь доделать
             //avatar.setImageBitmap(task.getUser().getAvatar());Убрать комментарий когда появятся фотки
         }
     }
