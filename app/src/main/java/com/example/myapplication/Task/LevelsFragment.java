@@ -4,16 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.myapplication.R;
-import com.example.myapplication.Task.TasksActivity;
-
-import java.util.Objects;
 
 public class LevelsFragment extends Fragment {
     String login;
@@ -21,7 +17,7 @@ public class LevelsFragment extends Fragment {
     Intent intent;
 
     public LevelsFragment(){
-        super(R.layout.activty_main);
+        super(R.layout.activty_levels);
     }
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {

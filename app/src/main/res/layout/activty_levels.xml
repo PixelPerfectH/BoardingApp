@@ -12,9 +12,9 @@
         android:layout_height="100dp"
         android:layout_toStartOf="@+id/button5"
         android:gravity="center"
-        android:text="Задание5"
+        android:text="Знакомство с коллективом"
         android:textAlignment="center"
-
+        android:textColor="@color/black"
         />
 
     <Button
@@ -36,8 +36,9 @@
         android:layout_below="@+id/task5"
         android:layout_toStartOf="@+id/button4"
         android:gravity="center"
-        android:text="Задание4"
-        android:textAlignment="center" />
+        android:text="Обучение корпоративной культуре, понимманию ценностей компании"
+        android:textAlignment="center"
+         android:textColor="@color/black"/>
 
     <Button
         android:id="@+id/button4"
@@ -59,8 +60,9 @@
         android:layout_below="@+id/task4"
         android:layout_toStartOf="@+id/button3"
         android:gravity="center"
-        android:text="Задание3"
-        android:textAlignment="center" />
+        android:text="Обучение по работе с внутренней системой управления проектами"
+        android:textAlignment="center"
+        android:textColor="@color/black"/>
 
     <Button
         android:id="@+id/button3"
@@ -82,8 +84,10 @@
         android:layout_below="@+id/task3"
         android:layout_toStartOf="@+id/button2"
         android:gravity="center"
-        android:text="Задание2"
-        android:textAlignment="center" />
+        android:text="Ознакомление с инструкциями и регламентами работы в компании"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        />
 
     <Button
         android:id="@+id/button2"
@@ -105,7 +109,8 @@
         android:layout_below="@+id/task2"
         android:layout_toStartOf="@+id/button1"
         android:gravity="center"
-        android:text="Задание1"
+        android:text="Обучение технике безопасности"
+        android:textColor="@color/black"
         android:textAlignment="center" />
 
     <Button
