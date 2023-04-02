@@ -6,6 +6,7 @@ public class Task {
     public User user;
     public boolean isActive = true;
 
+
     public String getName() {
         return name;
     }

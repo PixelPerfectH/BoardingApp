@@ -1,4 +1,4 @@
-package com.example.myapplication.models;
+package com.example.myapplication.Events;
 
 import android.os.Bundle;
 import android.widget.CheckBox;

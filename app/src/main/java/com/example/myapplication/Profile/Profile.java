@@ -25,6 +25,7 @@ public class Profile extends Fragment {
     ArrayList<Employee> employees = new ArrayList<>();
     TextView yourPlaceTV;
     TextView nameTV;
+    TextView nameMainTV;
     TextView pointsTV;
     String login;
     ImageView avatar;
@@ -42,6 +43,7 @@ public class Profile extends Fragment {
         GetRequest getRequest1 = new GetRequest();
         yourPlaceTV = view.findViewById(R.id.place);
         nameTV = view.findViewById(R.id.name);
+        nameMainTV = view.findViewById(R.id.nameTV);
         pointsTV = view.findViewById(R.id.pointsTV);
         avatar = view.findViewById(R.id.avatarIV);
         String result;
@@ -67,6 +69,7 @@ public class Profile extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.three);
         yourPlaceTV.setText(Integer.toString(employees.get(employees.size() - 1).getPlace()));
         nameTV.setText(employees.get(employees.size() - 1).getName());
+        nameMainTV.setText(user.getFirstName()+" "+user.getLastName());
         pointsTV.setText(Integer.toString(employees.get(employees.size() - 1).getPoints()));
         employees.remove(employees.size() - 1);
         avatar.setImageBitmap(user.getAvatar());
