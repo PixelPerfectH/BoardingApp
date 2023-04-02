@@ -42,16 +42,19 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.ViewHo
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder{
-        TextView name,place;
+        TextView name,place,score;
 
         ViewHolder(View view){
             super(view);
             name=view.findViewById(R.id.name);
             place=view.findViewById(R.id.place);
+            score = view.findViewById(R.id.score);
         }
+        @SuppressLint("SetTextI18n")
         void set(Employee employee){
             this.name.setText(employee.getName());
             this.place.setText(String.valueOf(employee.getPlace()));
+            this.score.setText(Integer.toString(employee.getPoints()));
         }
     }
 }

@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
+import com.example.myapplication.models.WillGoEventModel;
 import com.example.myapplication.requests.PostRequest;
 import com.google.gson.Gson;
 
@@ -16,6 +17,7 @@ import java.util.concurrent.ExecutionException;
 
 public class Description extends AppCompatActivity {
     String login;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

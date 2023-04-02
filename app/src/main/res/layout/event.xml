@@ -42,7 +42,6 @@
                 android:layout_marginHorizontal="5dp"
                 android:text="A big Lection about environment and the harm we do to it"
                 android:textSize="20sp"
-
                 />
         </LinearLayout>
 

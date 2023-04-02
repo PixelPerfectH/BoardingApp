@@ -27,6 +27,7 @@ public class Profile extends Fragment {
     TextView nameTV;
     TextView nameMainTV;
     TextView pointsTV;
+    TextView scoreDB;
     String login;
     ImageView avatar;
     User user;
@@ -43,6 +44,7 @@ public class Profile extends Fragment {
         GetRequest getRequest1 = new GetRequest();
         yourPlaceTV = view.findViewById(R.id.place);
         nameTV = view.findViewById(R.id.name);
+        scoreDB = view.findViewById(R.id.score);
         nameMainTV = view.findViewById(R.id.nameTV);
         pointsTV = view.findViewById(R.id.pointsTV);
         avatar = view.findViewById(R.id.avatarIV);
@@ -70,6 +72,7 @@ public class Profile extends Fragment {
         yourPlaceTV.setText(Integer.toString(employees.get(employees.size() - 1).getPlace()));
         nameTV.setText(employees.get(employees.size() - 1).getName());
         nameMainTV.setText(user.getFirstName() + " " + user.getLastName());
+        scoreDB.setText(Integer.toString(employees.get(employees.size() - 1).getPoints()));
         pointsTV.setText(Integer.toString(employees.get(employees.size() - 1).getPoints()));
         employees.remove(employees.size() - 1);
         avatar.setImageBitmap(user.getAvatar());

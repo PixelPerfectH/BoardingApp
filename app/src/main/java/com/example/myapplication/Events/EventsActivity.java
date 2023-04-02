@@ -20,9 +20,13 @@ import java.util.concurrent.ExecutionException;
 
 public class EventsActivity extends Fragment {
 
-    ArrayList<Event> events=new ArrayList<>();
+    ArrayList<Event> events = new ArrayList<>();
     String login;
-    public EventsActivity(){super(R.layout.list_events);}
+
+    public EventsActivity() {
+        super(R.layout.list_events);
+    }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -39,14 +43,16 @@ public class EventsActivity extends Fragment {
         }
         if (result != null) {
             Gson gson = new Gson();
-            events = gson.fromJson(result, new TypeToken<List<Event>>(){}.getType());
+            events = gson.fromJson(result, new TypeToken<List<Event>>() {
+            }.getType());
         }
         EventAdapter.OnEventClickListener eventClickListener = (state, position) -> {
             intent.putExtra("eventName", events.get(position).getName());
             intent.putExtra("eventDescription", events.get(position).getDescription());
+            intent.putExtra("login",login);
             startActivity(intent);
         };
-        EventAdapter adapter = new EventAdapter(getActivity(), events,eventClickListener);
+        EventAdapter adapter = new EventAdapter(getActivity(), events, eventClickListener);
         recyclerView.setAdapter(adapter);
     }
 }
