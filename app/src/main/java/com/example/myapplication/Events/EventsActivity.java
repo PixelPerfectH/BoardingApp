@@ -33,7 +33,6 @@ public class EventsActivity extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.recycler);
         Intent intent = new Intent(getActivity(), Description.class);
         login = requireActivity().getIntent().getExtras().get("login").toString();
-        //Заполнить массив events
         GetRequest getRequest = new GetRequest();
         String result;
         try {

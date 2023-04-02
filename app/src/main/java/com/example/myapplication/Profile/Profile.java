@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.models.User;
 import com.example.myapplication.requests.GetRequest;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -27,6 +28,7 @@ public class Profile extends Fragment {
     TextView pointsTV;
     String login;
     ImageView avatar;
+    User user;
 
     public Profile() {
         super(R.layout.activity_user_profile);
@@ -60,6 +62,7 @@ public class Profile extends Fragment {
         nameTV.setText(employees.get(employees.size() - 1).getName());
         pointsTV.setText(Integer.toString(employees.get(employees.size() - 1).getPoints()));
         employees.remove(employees.size() - 1);
+        avatar.setImageBitmap(user.getAvatar());
         EmployeeAdapter adapter = new EmployeeAdapter(getActivity(), employees);
         // устанавливаем для списка адаптер
         recyclerView.setAdapter(adapter);
