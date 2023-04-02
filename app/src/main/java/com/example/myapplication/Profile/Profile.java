@@ -39,6 +39,7 @@ public class Profile extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         GetRequest getRequest = new GetRequest();
+        GetRequest getRequest1 = new GetRequest();
         yourPlaceTV = view.findViewById(R.id.place);
         nameTV = view.findViewById(R.id.name);
         pointsTV = view.findViewById(R.id.pointsTV);
@@ -48,7 +49,7 @@ public class Profile extends Fragment {
         login = requireActivity().getIntent().getExtras().get("login").toString();
         try {
             result = getRequest.execute("https://clerostyle.drawy.ru/api/point/gettopusers?userName=" + login + "&amount=3").get();
-            userResult = getRequest.execute("https://clerostyle.drawy.ru/api/profile/getuser?userName=" + login).get();
+            userResult = getRequest1.execute("https://clerostyle.drawy.ru/api/profile/getuser?userName=" + login).get();
         } catch (ExecutionException | InterruptedException e) {
             throw new RuntimeException(e);
         }
