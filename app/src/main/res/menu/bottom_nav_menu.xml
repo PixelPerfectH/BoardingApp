@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/profile"
-        android:title="Profile"
+        android:title="Профиль"
         android:icon="@drawable/baseline_account_circle_24"
         />
     <item android:id="@+id/levels"
-        android:title="Levels"
+        android:title="Уровни"
         android:icon="@drawable/baseline_checklist_24" />
     <item android:id="@+id/events"
-        android:title="Events"
+        android:title="Ивенты"
         android:icon="@drawable/baseline_event_note_24" />
 
 </menu>
