@@ -24,6 +24,7 @@ import java.util.concurrent.ExecutionException;
 public class EventsActivity extends Fragment {
 
     ArrayList<Event> events=new ArrayList<>();
+    String login;
     public EventsActivity(){super(R.layout.list_events);}
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -31,11 +32,12 @@ public class EventsActivity extends Fragment {
 
         RecyclerView recyclerView = view.findViewById(R.id.recycler);
         Intent intent = new Intent(getActivity(), Description.class);
+        login = requireActivity().getIntent().getExtras().get("login").toString();
         //Заполнить массив events
         GetRequest getRequest = new GetRequest();
         String result;
         try {
-            result = getRequest.execute("https://clerostyle.drawy.ru/api/event/getlist?userName=" + "CleroStyle" + "&firstElement=0&lastElement=4").get();
+            result = getRequest.execute("https://clerostyle.drawy.ru/api/event/getlist?userName=" + login + "&firstElement=0&lastElement=4").get();
         } catch (ExecutionException | InterruptedException e) {
             throw new RuntimeException(e);
         }
