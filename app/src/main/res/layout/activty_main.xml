@@ -1,94 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
 
+    <TextView
+        android:id="@+id/task5"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_toStartOf="@+id/button5"
+        android:gravity="center"
+        android:text="Задание5"
+        android:textAlignment="center"
+        />
+
     <Button
         android:id="@+id/button5"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:layout_width="66dp"
-        android:layout_height="66dp"
-        android:layout_marginBottom="112dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentEnd="true"
         android:foreground="@drawable/rnslogo"
         android:text="5"
         android:textColor="@color/black"
         android:textSize="25dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.307"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.115" />
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/task4"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/task5"
+        android:layout_toStartOf="@+id/button4"
+        android:gravity="center"
+        android:text="Задание4"
+        android:textAlignment="center" />
 
     <Button
         android:id="@+id/button4"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:layout_width="66dp"
-        android:layout_height="66dp"
-        android:layout_marginBottom="92dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/button5"
+        android:layout_alignParentEnd="true"
         android:foreground="@drawable/rnslogo"
         android:text="4"
         android:textColor="@color/black"
         android:textSize="25dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.689"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/task3"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/task4"
+        android:layout_toStartOf="@+id/button3"
+        android:gravity="center"
+        android:text="Задание3"
+        android:textAlignment="center" />
 
     <Button
         android:id="@+id/button3"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:layout_width="66dp"
-        android:layout_height="66dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/button4"
+        android:layout_alignParentEnd="true"
         android:foreground="@drawable/rnslogo"
         android:text="3"
         android:textColor="@color/black"
         android:textSize="25dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.231"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/task2"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/task3"
+        android:layout_toStartOf="@+id/button2"
+        android:gravity="center"
+        android:text="Задание2"
+        android:textAlignment="center" />
 
     <Button
         android:id="@+id/button2"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:layout_width="66dp"
-        android:layout_height="66dp"
-        android:layout_marginBottom="164dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/button3"
+        android:layout_alignParentEnd="true"
         android:foreground="@drawable/rnslogo"
         android:text="2"
         android:textColor="@color/black"
         android:textSize="25dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/button1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.817"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/task1"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/task2"
+        android:layout_toStartOf="@+id/button1"
+        android:gravity="center"
+        android:text="Задание1"
+        android:textAlignment="center" />
 
     <Button
         android:id="@+id/button1"
-        android:layout_width="66dp"
-        android:layout_height="67dp"
-        android:layout_marginBottom="28dp"
-        android:foreground="@drawable/rnslogo"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:textStyle="bold"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/button2"
+        android:layout_alignParentEnd="true"
+        android:foreground="@drawable/rnslogo"
+        android:text="1"
         android:textColor="@color/black"
         android:textSize="25dp"
-        android:text="1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:textStyle="bold" />
+
+</RelativeLayout>
