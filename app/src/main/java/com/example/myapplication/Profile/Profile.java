@@ -5,11 +5,9 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Events.Event;
 import com.example.myapplication.R;
 import com.example.myapplication.requests.GetRequest;
 import com.google.gson.Gson;
