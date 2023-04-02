@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
                             case R.id.events:
                                 getSupportFragmentManager().beginTransaction()
                                         .replace(R.id.fragment_container_view, eventsFragment).commit();
+
                                 return true;
                             case R.id.levels:
                                 getSupportFragmentManager().beginTransaction()

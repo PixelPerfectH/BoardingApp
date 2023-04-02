@@ -47,12 +47,15 @@ public class Profile extends Fragment {
             Gson gson = new Gson();
             employees = gson.fromJson(result, new TypeToken<List<Employee>>() {
             }.getType());
+            //получение баллов
+            employees = gson.fromJson(result, new TypeToken<List<Employee>>(){}.getType());
         }
         RecyclerView recyclerView = view.findViewById(R.id.three);
         yourPlaceTV.setText(Integer.toString(employees.get(employees.size() - 1).getPlace()));
         nameTV.setText(employees.get(employees.size() - 1).getName());
         employees.remove(employees.size() - 1);
         EmployeeAdapter adapter = new EmployeeAdapter(getActivity(), employees);
+        // устанавливаем для списка адаптер
         recyclerView.setAdapter(adapter);
 
     }
