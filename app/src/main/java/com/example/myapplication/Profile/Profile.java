@@ -38,6 +38,7 @@ public class Profile extends Fragment {
         }
         if (result != null) {
             Gson gson = new Gson();
+            //получение баллов
             employees = gson.fromJson(result, new TypeToken<List<Employee>>(){}.getType());
         }
         RecyclerView recyclerView = view.findViewById(R.id.three);
