@@ -17,6 +17,7 @@ import java.util.concurrent.ExecutionException;
 
 public class Description extends AppCompatActivity {
     String login;
+    boolean iGo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,8 @@ public class Description extends AppCompatActivity {
         nameTV.setText(getIntent().getExtras().get("eventName").toString());
         descriptionTV.setTextSize(26);
         CheckBox enableBox = findViewById(R.id.check);
+        iGo = Boolean.parseBoolean(getIntent().getExtras().get("isGo").toString());
+        enableBox.setChecked(iGo);
         setContentView(scrollView);
 
 
@@ -42,6 +45,7 @@ public class Description extends AppCompatActivity {
                     Integer responseCode = postRequest.execute("https://clerostyle.drawy.ru/api/event/willgo").get();
                     if (responseCode == 200) {
                         System.out.println("OK");
+
                     }
                 } catch (ExecutionException | InterruptedException e) {
                     throw new RuntimeException(e);

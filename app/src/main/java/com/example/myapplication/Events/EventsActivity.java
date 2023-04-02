@@ -50,6 +50,7 @@ public class EventsActivity extends Fragment {
             intent.putExtra("eventName", events.get(position).getName());
             intent.putExtra("eventDescription", events.get(position).getDescription());
             intent.putExtra("login",login);
+            intent.putExtra("isGo", Boolean.toString(events.get(position).willGo()));
             startActivity(intent);
         };
         EventAdapter adapter = new EventAdapter(getActivity(), events, eventClickListener);
