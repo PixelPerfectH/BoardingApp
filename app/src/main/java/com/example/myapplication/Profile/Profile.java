@@ -44,9 +44,11 @@ public class Profile extends Fragment {
         pointsTV = view.findViewById(R.id.pointsTV);
         avatar = view.findViewById(R.id.avatarIV);
         String result;
+        String userResult;
         login = requireActivity().getIntent().getExtras().get("login").toString();
         try {
             result = getRequest.execute("https://clerostyle.drawy.ru/api/point/gettopusers?userName=" + login + "&amount=3").get();
+            userResult = getRequest.execute("https://clerostyle.drawy.ru/api/profile/getuser?userName=" + login).get();
         } catch (ExecutionException | InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -56,6 +58,10 @@ public class Profile extends Fragment {
             }.getType());
             //получение баллов
             employees = gson.fromJson(result, new TypeToken<List<Employee>>(){}.getType());
+        }
+        if (userResult != null) {
+            Gson gson = new Gson();
+            user = gson.fromJson(userResult, User.class);
         }
         RecyclerView recyclerView = view.findViewById(R.id.three);
         yourPlaceTV.setText(Integer.toString(employees.get(employees.size() - 1).getPlace()));
